@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="meniu1.css" rel="stylesheet"/>
+    <title>Coș</title>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Produse
+            </button>
+            <div class="dropdown-content">
+                <a href="produse.html">Inele de logodnă</a>
+                <a href="#">Verighete</a>
+            </div>
+        </div>
+        <a href="#news">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cos.html" style="float: right;">Coșul de cumpărături</a>
+        <a href="cont.html" style="float: right;">Autentificare</a>
+    </div>
+</header>
+
+    <div class="cart-section">
+    
+    <div class="table-heading">
+      <h2 class="cart-product">Produs</h2>
+      <h2 class="cart-size">Mărime</h2>
+      <h2 class="cart-total">Preț</h2>
+    </div>  
+    
+    <div class="table-content">
+      <div class="cart-product">  
+        <div class="cart-image-box">
+          <div class="cart-images" id="image-1"></div>
+        </div>
+        <h2 class="cart-item">Rose</h2>
+        <p class="cart-description">Aur roz, safir</p>
+      </div>
+      <div class="cart-size">
+        <input type="text" name="cart-1-size" id="cart-1-size" value="15">
+      </div>
+      <div class="cart-total">
+        <h3 class="price">$299.99</h3>
+        <button type="button" class="remove" name="remove-1" id="remove-1">x</button>
+      </div>
+    </div>
+    
+    <div class="table-content">
+      <div class="cart-product">  
+        <div class="cart-image-box">
+          <div class="cart-images" id="image-3"></div>
+        </div>
+        <h2 class="cart-item">Ocean</h2>
+        <p class="cart-description">Aur alb, safir</p>
+      </div>
+      <div class="cart-size">
+        <input type="text" name="cart-1-size" id="cart-1-size" value="14">
+      </div>
+      <div class="cart-total">
+        <h3 class="price">$399.99</h3>
+        <button type="button" class="remove" name="remove-2" id="remove-2">x</button>
+      </div>
+    </div>
+    
+    <div class="table-content">
+      <div class="cart-product">  
+        <div class="cart-image-box">
+          <div class="cart-images" id="image-7"></div>
+        </div>
+        <h2 class="cart-item">Infinity</h2>
+        <p class="cart-description">Aur alb, rubine, diamante</p>
+      </div>
+      <div class="cart-size">
+        <input type="text" name="cart-1-size" id="cart-1-size" value="14">
+      </div>
+      <div class="cart-total">
+        <h3 class="price">$699.99</h3>
+        <button type="button" class="remove" name="remove-3" id="remove-3">x</button>
+      </div>
+    </div>
+    
+    <div class="coupon">
+        <input type="text" name="coupon" id="coupon" placeholder="Cod de reducere">
+        <button type="button" name="coupon-btn" id="coupon-btn">Adaugă</button>
+    </div>
+
+    <div class="checkout">
+        <button type="button" name="checkout" id="checkout">Comandă</button>
+        <div class="final-cart-total" id="final-cart-total">
+            <h3 class="price">$0.00</h3>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var prices = document.querySelectorAll('.price');
+        var totalElement = document.getElementById('final-cart-total');
+        var removeButtons = document.querySelectorAll('.remove');
+        var couponButton = document.getElementById('coupon-btn');
+        var checkoutButton = document.getElementById('checkout');
+        var couponInput = document.getElementById('coupon');
+
+        // Function to update the total based on individual prices
+        function updateTotal() {
+            var total = 0;
+            prices.forEach(function (priceElement) {
+                var price = parseFloat(priceElement.textContent.replace('$', ''));
+                total += price;
+            });
+
+            totalElement.innerHTML = '<h3 class="price">$' + total.toFixed(2) + '</h3>';
+        }
+
+        // Remove button functionality
+        removeButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                button.closest('.table-content').remove();
+                updateTotal();
+            });
+        });
+
+        // Coupon button functionality
+        couponButton.addEventListener('click', function () {
+            var couponValue = parseFloat(couponInput.value) || 0;
+            var currentTotal = parseFloat(totalElement.textContent.replace('$', ''));
+            var updatedTotal = Math.max(0, currentTotal - couponValue);
+            totalElement.innerHTML = '<h3 class="price">$' + updatedTotal.toFixed(2) + '</h3>';
+        });
+
+        // Checkout button functionality
+        checkoutButton.addEventListener('click', function () {
+            alert('Checkout clicked!\nTotal Amount: ' + totalElement.textContent);
+        });
+
+        // Initial update of the total
+        updateTotal();
+    });
+</script>
+</body>
+</html>

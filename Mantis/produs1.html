@@ -1,0 +1,158 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <link href="meniu1.css" rel="stylesheet"/>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product Page</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: #f0f0f0;
+            }
+    
+            header {
+                background-color: #333;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                width: 100%;
+            }
+    
+            
+            .product {
+                display: flex;
+                max-width: 800px;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                margin-top: 20px;
+            }
+    
+            .product-images {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+    
+            .main-image {
+                width: 100%;
+                max-height: 300px;
+                object-fit: contain;
+                cursor: pointer;
+            }
+    
+            .thumbnail-images {
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+            }
+    
+            .thumbnail-image {
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+                margin-bottom: 5px;
+                cursor: pointer;
+            }
+    
+            .product-details {
+                flex: 1;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+            }
+    
+            .product-name {
+                font-size: 1.5em;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+    
+            .product-description {
+                margin-bottom: 20px;
+            }
+    
+            .product-price {
+                font-size: 1.5em;
+                font-weight: bold;
+                color: green;
+                margin-bottom: 20px;
+            }
+    
+            .add-to-cart-button {
+                padding: 10px 20px;
+                font-size: 1.2em;
+                background-color: #3498db;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <header>
+            <div class="navbar">
+                <div class="dropdown">
+                    <button class="dropbtn">Produse
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="produse.html">Inele de logodnă</a>
+                        <a href="#">Verighete</a>
+                    </div>
+                </div>
+                <a href="#news">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="cos.html" style="float: right;">Coșul de cumpărături</a>
+                <a href="cont.html" style="float: right;">Autentificare</a>
+            </div>
+        </header>
+    
+        <div class="product">
+            <div class="product-images">
+                <img src="p1.1.jpg" alt="Ring Image 1" class="main-image">
+                <div class="thumbnail-images">
+                    <a href="p1.1.jpg" onclick="return changeImage('p1.1.jpg')"><img src="p1.1.jpg" alt="Thumbnail 1" class="thumbnail-image"></a>
+                    <a href="p1.2.jpg" onclick="return changeImage('p1.2.jpg')"><img src="p1.2.jpg" alt="Thumbnail 2" class="thumbnail-image"></a>
+                    <a href="p1.3.jpg" onclick="return changeImage('p1.3.jpg')"><img src="p1.3.jpg" alt="Thumbnail 3" class="thumbnail-image"></a>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="product-name">Inel Rose</div>
+                <div class="product-description">
+                  <p>Inelul de logodnă "Rose" îmbină eleganța și rafinamentul. Acest inel adăugă o notă de căldură și romantism oricărei ținute.</p>
+                  <p>Caracteristici principale:</p>
+                  <ul>
+                      <li>Material: Aur roz 14k</li>
+                      <li>Piatră Centrală: Safir roz autentic</li>
+                      <li>Pietre Laterale: Pietre de zirconiu</li>
+                  </ul>  
+                </div>
+                <div class="product-price">$299.99</div>
+                <button class="add-to-cart-button" onclick="addToCart()">Adaugă în Coș</button>
+            </div>
+        </div>
+    
+        <script>
+            function changeImage(imageSrc) {
+                document.querySelector('.main-image').src = imageSrc;
+                return false;
+            }
+    
+            function addToCart() {
+                //shopping cart logic
+                alert('Item added to the shopping cart!');
+            }
+        </script>
+    
+    </body>
+    </html>
+    
